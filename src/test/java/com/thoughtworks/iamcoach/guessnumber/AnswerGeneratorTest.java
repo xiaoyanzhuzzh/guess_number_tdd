@@ -21,5 +21,19 @@ public class AnswerGeneratorTest {
         assertThat(answerOne).isNotEqualTo(answerTwo);
     }
 
+    @Test
+    public void answer_should_be_number(){
+        AnswerGenerator answerGenerator = new AnswerGenerator();
+        String answer = answerGenerator.generate();
 
+        boolean isNumber = true;
+        for(int i=0; i<answer.length(); i++){
+            if(answer.charAt(i) >57 || answer.charAt(i) < 48){
+                isNumber = false;
+                break;
+            }
+        }
+
+        assertThat(isNumber).isTrue();
+    }
 }
