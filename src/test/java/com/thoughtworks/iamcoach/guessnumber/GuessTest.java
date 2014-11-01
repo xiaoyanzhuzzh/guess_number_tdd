@@ -10,23 +10,26 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class GuessTest {
-    private AnswerGenerator answerGenerator;
-    private CompareNumber compareNumber;
-
-    @Before
-    public void before(){
-        Random random = mock(Random.class);
-        when(random.nextInt(10)).thenReturn(1, 2, 3, 4);
-
-        answerGenerator = new AnswerGenerator(random);
-        compareNumber = new CompareNumber();
-    }
-
+    //集成测试
     @Test
     public void should_be_right(){
-        Guess guess = new Guess(answerGenerator, compareNumber);
+          Random random = mock(Random.class);
+          when(random.nextInt(10)).thenReturn(1, 2, 3, 4);
+
+        Guess guess = new Guess(new AnswerGenerator(random), new CompareNumber());
         String input = "1234";
         assertThat(guess.guess(input)).isEqualTo("4A0B");
     }
+    //单元测试
+    @Test
+    public void can_get_correct_output(){
+        AnswerGenerator answerGenerator = mock(AnswerGenerator.class);
+        when(answerGenerator.generate()).thenReturn("1234");
 
+        CompareNumber compareNumber = mock(CompareNumber.class);
+        when(compareNumber.compare("1256", "1234")).thenReturn("2A0B");
+
+        Guess guess = new Guess(answerGenerator,compareNumber);
+        assertThat(guess.guess("1256")).isEqualTo("2A0B");
+    }
 }
