@@ -1,7 +1,15 @@
 package com.thoughtworks.iamcoach.guessnumber;
 
-/**
- * Created by zhangzhihui on 14-11-1.
- */
+import org.junit.Test;
+
+import static org.fest.assertions.api.Assertions.assertThat;
+
 public class AnswerGeneratorTest {
+    @Test
+    public void answer_length_should_be_four(){
+        AnswerGenerator answerGenerator = new AnswerGenerator();
+        assertThat(answerGenerator.generate().length()).isEqualTo(4);
+    }
+
+
 }
