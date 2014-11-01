@@ -23,4 +23,14 @@ public class CompareNumberTest {
 
         assertThat(compareNumber.compare(input, answer)).isEqualTo("0A0B");
     }
+
+    @Test
+    public void should_return_4A0B(){
+        CompareNumber compareNumber = new CompareNumber();
+        String input = "1234";
+        String answer = "1234";
+
+        assertThat(compareNumber.compare(input, answer)).isEqualTo("4A0B");
+    }
+
 }
