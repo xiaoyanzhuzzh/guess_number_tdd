@@ -17,7 +17,7 @@ public class GuessTest {
     public void before(){
         Random random = mock(Random.class);
         when(random.nextInt(10)).thenReturn(1, 2, 3, 4);
-        
+
         answerGenerator = new AnswerGenerator(random);
         compareNumber = new CompareNumber();
     }
