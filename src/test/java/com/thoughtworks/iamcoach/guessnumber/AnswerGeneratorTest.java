@@ -33,7 +33,23 @@ public class AnswerGeneratorTest {
                 break;
             }
         }
-
         assertThat(isNumber).isTrue();
+    }
+
+    @Test
+    public void answer_should_not_be_repeated(){
+        AnswerGenerator answerGenerator = new AnswerGenerator();
+
+        String answer = answerGenerator.generate();
+        boolean isNotRepeat = true;
+        for(int i=0; i<answer.length(); i++){
+            for(int j = i+1; j<answer.length(); j++){
+                if(answer.charAt(i) == answer.charAt(j)){
+                    isNotRepeat = false;
+                    break;
+                }
+            }
+        }
+        assertThat(isNotRepeat).isTrue();
     }
 }
