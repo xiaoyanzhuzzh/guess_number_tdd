@@ -2,15 +2,14 @@ package com.thoughtworks.iamcoach.guessnumber;
 
 public class Guess {
     private CompareNumber compareNumber;
-    private AnswerGenerator answerGenerator;
+    private String answer;
 
     public Guess(AnswerGenerator answerGenerator, CompareNumber compareNumber) {
-        this.answerGenerator = answerGenerator;
+        this.answer = answerGenerator.generate();
         this.compareNumber = compareNumber;
     }
 
     public String guess(String input) {
-        String answer = answerGenerator.generate();
         return compareNumber.compare(input, answer);
     }
 }
