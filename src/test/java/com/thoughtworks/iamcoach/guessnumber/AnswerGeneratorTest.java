@@ -14,9 +14,11 @@ public class AnswerGeneratorTest {
     @Test
     public void answer_should_be_random(){
         AnswerGenerator answerGenerator = new AnswerGenerator();
+
         String answerOne = answerGenerator.generate();
         String answerTwo = answerGenerator.generate();
-        assertThat(answerOne).isEqualTo(answerTwo);
+
+        assertThat(answerOne).isNotEqualTo(answerTwo);
     }
 
 
